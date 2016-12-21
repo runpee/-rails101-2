@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    flash[:notice] = "nihao !"
+    flash[:warning] = "nihao !"
   end
 end
