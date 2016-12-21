@@ -1,5 +1,7 @@
 <div class="col-md-12">
-  <%= link_to("Edit", edit_group_path(@group), class: "btn btn-primary btn-sm pull-right") %>
+  <div class="group">
+    <%= link_to("Edit", edit_group_path(@group), class: "btn btn-primary pull-right")%>
+  </div>
   <h2><%= @group.title %></h2>
   <p><%= @group.description %></p>
 </div>
