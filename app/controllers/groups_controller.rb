@@ -43,11 +43,33 @@ class GroupsController < ApplicationController
   end
 
   def edit
-
   end
 
+  def join
+    @group = Group.find(params[:id])
 
+    if !current_user.is_member_of?(@group)
+      current_user.join!(@group)
+      flash[:notice]="加入中国共产党成功！"
+    else
+      flash[:id]="你已经是中国少先队员了！"
+    end
 
+    redirect_to group_path(@group)
+  end
+
+  def quit
+    @group = Group.find(params[:id])
+
+    if current_user.is_member_of?(@group)
+      current_user.quit!(@group)
+      flash[:notice]="你已经被双规了"
+    else
+      flash[:notice]="你他妈都不是共产党员怎么退党！是不是傻"
+    end
+    redirect_to group_path(@group)
+
+  end
 
   private
 
